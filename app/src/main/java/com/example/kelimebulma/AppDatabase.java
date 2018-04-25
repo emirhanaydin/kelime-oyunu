@@ -1,7 +1,9 @@
 package com.example.kelimebulma;
 
 import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.content.Context;
 
 import com.example.kelimebulma.dao.KelimeDao;
 import com.example.kelimebulma.dao.KullaniciDao;
@@ -12,6 +14,21 @@ import com.example.kelimebulma.model.Puan;
 
 @Database(entities = {Kelime.class, Kullanici.class, Puan.class}, version = 1)
 abstract class AppDatabase extends RoomDatabase {
+    private static AppDatabase instance;
+
+    public synchronized static AppDatabase getInstance(Context context) {
+        if (instance == null)
+            instance = Room.databaseBuilder(context, AppDatabase.class, "kelimeoyunu.db")
+                    .allowMainThreadQueries()
+                    .build();
+
+        return instance;
+    }
+
+    public synchronized static void destroyInstance() {
+        instance = null;
+    }
+
     public abstract KelimeDao kelimeDao();
 
     public abstract KullaniciDao kullaniciDao();

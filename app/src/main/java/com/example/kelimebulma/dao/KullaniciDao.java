@@ -42,8 +42,10 @@ public interface KullaniciDao {
     @Query("SELECT * FROM kullanici WHERE id = :id")
     Kullanici getKullanici(int id);
 
-    @Query("SELECT * FROM kullanici WHERE kullanici_adi = :kullaniciAdi")
-    Kullanici getKullanici(String kullaniciAdi);
+    @Query("SELECT * FROM kullanici WHERE eposta = :eposta")
+    Kullanici getKullanici(String eposta);
+
+    //TODO: E-posta "ya da" kullanıcı adı yapısı için uygun bir yöntem bul
 
     @Insert
     void ekle(Kullanici... kisiler);

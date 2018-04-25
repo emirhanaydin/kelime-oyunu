@@ -27,6 +27,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.kelimebulma.model.Kullanici;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -308,20 +310,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
+            AppDatabase appDatabase = AppDatabase.getInstance(getApplicationContext());
+            Kullanici kullanici = appDatabase.kullaniciDao().getKullanici(mEmail);
+
+            if (kullanici != null)
+                return kullanici.sifre.equals(mPassword);
+
+            kullanici = new Kullanici("ad", "soyad", "test", mEmail, mPassword);
+            try {
+                appDatabase.kullaniciDao().ekle(kullanici);
+            } catch (Exception e) {
+                return false;
             }
 
-            // TODO: register the new account here.
             return true;
         }
 
