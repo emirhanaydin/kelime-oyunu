@@ -42,6 +42,9 @@ public interface KullaniciDao {
     @Query("SELECT * FROM kullanici WHERE id = :id")
     Kullanici getKullanici(int id);
 
+    @Query("SELECT * FROM kullanici WHERE kullanici_adi = :kullaniciAdi")
+    Kullanici getKullanici(String kullaniciAdi);
+
     @Insert
     void ekle(Kullanici... kisiler);
 
