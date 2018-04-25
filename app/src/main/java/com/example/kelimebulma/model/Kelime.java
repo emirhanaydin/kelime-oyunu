@@ -4,23 +4,17 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "KelimeTablosu")
+@Entity(tableName = "kelime")
 public class Kelime {
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    public final int id;
 
     @ColumnInfo(name = "kelime_metni")
     private String kelimeMetni;
     @ColumnInfo(name = "soru")
     private String soru;
-    @ColumnInfo(name = "uzunluk")
-    private int uzunluk;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
+    public Kelime(int id) {
         this.id = id;
     }
 
@@ -38,13 +32,5 @@ public class Kelime {
 
     public void setSoru(String soru) {
         this.soru = soru;
-    }
-
-    public int getUzunluk() {
-        return uzunluk;
-    }
-
-    public void setUzunluk(int uzunluk) {
-        this.uzunluk = uzunluk;
     }
 }

@@ -9,13 +9,13 @@ import com.example.kelimebulma.model.Puan;
 
 @Dao
 public interface PuanDao {
-    @Query("SELECT kullanici_id FROM PuanTablosu WHERE id = :id")
-    int getKullaniciId(int id);
+    @Query("SELECT kullanici FROM puan WHERE id = :id")
+    int getKullanici(int id);
 
-    @Query("UPDATE PuanTablosu SET kullanici_id = :kullaniciId WHERE id = :id")
-    void setKullaniciId(int id, int kullaniciId);
+    @Query("UPDATE puan SET kullanici = :kullanici WHERE id = :id")
+    void setKullanici(int id, int kullanici);
 
-    @Query("SELECT * FROM PuanTablosu WHERE id = :id")
+    @Query("SELECT * FROM puan WHERE id = :id")
     Puan getPuan(int id);
 
     @Insert

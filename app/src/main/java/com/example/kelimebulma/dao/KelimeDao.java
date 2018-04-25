@@ -9,25 +9,19 @@ import com.example.kelimebulma.model.Kelime;
 
 @Dao
 public interface KelimeDao {
-    @Query("SELECT kelime_metni FROM KelimeTablosu WHERE id = :id")
+    @Query("SELECT kelime_metni FROM kelime WHERE id = :id")
     String getKelimeMetni(int id);
 
-    @Query("UPDATE KelimeTablosu SET kelime_metni = :kelimeMetni WHERE id = :id")
+    @Query("UPDATE kelime SET kelime_metni = :kelimeMetni WHERE id = :id")
     void setKelimeMetni(int id, String kelimeMetni);
 
-    @Query("SELECT soru FROM KelimeTablosu WHERE id = :id")
+    @Query("SELECT soru FROM kelime WHERE id = :id")
     String getSoru(int id);
 
-    @Query("UPDATE KelimeTablosu SET soru = :soru WHERE id = :id")
+    @Query("UPDATE kelime SET soru = :soru WHERE id = :id")
     void setSoru(int id, String soru);
 
-    @Query("SELECT soru FROM KelimeTablosu WHERE id = :id")
-    int getUzunluk(int id);
-
-    @Query("UPDATE KelimeTablosu SET uzunluk = :uzunluk WHERE id = :id")
-    void setUzunluk(int id, String uzunluk);
-
-    @Query("SELECT * FROM KelimeTablosu WHERE id = :id")
+    @Query("SELECT * FROM kelime WHERE id = :id")
     Kelime getKelime(int id);
 
     @Insert
