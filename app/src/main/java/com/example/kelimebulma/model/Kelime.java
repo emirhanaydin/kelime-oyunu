@@ -7,30 +7,15 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "kelime")
 public class Kelime {
     @PrimaryKey(autoGenerate = true)
-    public final int id;
+    public int id;
 
     @ColumnInfo(name = "kelime_metni")
-    private String kelimeMetni;
+    public String kelimeMetni;
     @ColumnInfo(name = "soru")
-    private String soru;
+    public String soru;
 
-    public Kelime(int id) {
-        this.id = id;
-    }
-
-    public String getKelimeMetni() {
-        return kelimeMetni;
-    }
-
-    public void setKelimeMetni(String kelimeMetni) {
+    public Kelime(String kelimeMetni, String soru) {
         this.kelimeMetni = kelimeMetni;
-    }
-
-    public String getSoru() {
-        return soru;
-    }
-
-    public void setSoru(String soru) {
         this.soru = soru;
     }
 }

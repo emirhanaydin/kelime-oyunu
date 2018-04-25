@@ -11,60 +11,24 @@ import android.arch.persistence.room.PrimaryKey;
                 @Index(value = {"eposta"}, unique = true)})
 public class Kullanici {
     @PrimaryKey(autoGenerate = true)
-    public final int id;
+    public int id;
 
     @ColumnInfo(name = "ad")
-    private String ad;
+    public String ad;
     @ColumnInfo(name = "soyad")
-    private String soyad;
+    public String soyad;
     @ColumnInfo(name = "kullanici_adi")
-    private String kullaniciAdi;
+    public String kullaniciAdi;
     @ColumnInfo(name = "eposta")
-    private String eposta;
+    public String eposta;
     @ColumnInfo(name = "sifre")
-    private String sifre;
+    public String sifre;
 
-    public Kullanici(int id) {
-        this.id = id;
-    }
-
-    public String getAd() {
-        return ad;
-    }
-
-    public void setAd(String ad) {
+    public Kullanici(String ad, String soyad, String kullaniciAdi, String eposta, String sifre) {
         this.ad = ad;
-    }
-
-    public String getSoyad() {
-        return soyad;
-    }
-
-    public void setSoyad(String soyad) {
         this.soyad = soyad;
-    }
-
-    public String getKullaniciAdi() {
-        return kullaniciAdi;
-    }
-
-    public void setKullaniciAdi(String kullaniciAdi) {
         this.kullaniciAdi = kullaniciAdi;
-    }
-
-    public String getEposta() {
-        return eposta;
-    }
-
-    public void setEposta(String eposta) {
         this.eposta = eposta;
-    }
-
-    public String getSifre() {
-        return sifre;
-    }
-
-    public void setSifre(String sifre) {
         this.sifre = sifre;
     }
 }

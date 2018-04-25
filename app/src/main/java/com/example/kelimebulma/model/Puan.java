@@ -14,40 +14,12 @@ import android.arch.persistence.room.PrimaryKey;
         indices = @Index(value = {"kullanici"}, unique = true))
 public class Puan {
     @PrimaryKey(autoGenerate = true)
-    public final int id;
+    public int id;
 
     @ColumnInfo(name = "kullanici")
-    private int kullanici;
+    public int kullanici;
     @ColumnInfo(name = "puan")
-    private int puan;
+    public int puan;
     @ColumnInfo(name = "tip")
-    private String tip;
-
-    public Puan(int id) {
-        this.id = id;
-    }
-
-    public int getKullanici() {
-        return kullanici;
-    }
-
-    public void setKullanici(int kullanici) {
-        this.kullanici = kullanici;
-    }
-
-    public int getPuan() {
-        return puan;
-    }
-
-    public void setPuan(int puan) {
-        this.puan = puan;
-    }
-
-    public String getTip() {
-        return tip;
-    }
-
-    public void setTip(String tip) {
-        this.tip = tip;
-    }
+    public String tip;
 }
