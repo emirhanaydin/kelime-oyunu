@@ -343,7 +343,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 startActivity(
                         new Intent(getApplicationContext(), HomeActivity.class)
                                 .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                .putExtra(getString(R.string.exta_kullanici_adi), mEmail));
+                                .putExtra(getString(R.string.exta_username), mEmail));
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

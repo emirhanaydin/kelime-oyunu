@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kelime Oyunu</string>
+    <string name="title_activity_login">Giriş yap</string>
+    <string name="prompt_email">Eposta</string>
+    <string name="prompt_password">Parola (opsiyonel)</string>
+    <string name="action_sign_in">Giriş yap ya da kayıt ol</string>
+    <string name="action_sign_in_short">Giriş yap</string>
+    <string name="error_invalid_email">Bu eposta adresi geçersiz</string>
+    <string name="error_invalid_password">Bu parola çok kısa</string>
+    <string name="error_incorrect_password">Bu parola geçersiz</string>
+    <string name="error_field_required">Bu alan gerekli</string>
+    <string name="play">Oyna</string>
+    <string name="permission_rationale">Eposta tahminleri için kişiler izni gereklidir.</string>
+</resources>

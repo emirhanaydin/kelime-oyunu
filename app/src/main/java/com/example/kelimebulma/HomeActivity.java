@@ -15,7 +15,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         TextView textView = findViewById(R.id.textViewKullaniciAdi);
-        String kullaniciAdi = getIntent().getStringExtra(getString(R.string.exta_kullanici_adi));
+        String kullaniciAdi = getIntent().getStringExtra(getString(R.string.exta_username));
         textView.setText(kullaniciAdi);
 
         Button playButton = findViewById(R.id.buttonOyna);
