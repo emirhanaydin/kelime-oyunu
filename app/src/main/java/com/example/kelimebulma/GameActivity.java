@@ -75,6 +75,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void girdiKontrolu(String girdi) {
+        //TODO: Karşılaştırmayı dinamik verilere göre yap
+        //TODO: Doğru ve yanlış durumları için eylem oluştur
         String message = girdi.equals("test") ? "DOĞRU!" : "YANLIŞ!";
 
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
