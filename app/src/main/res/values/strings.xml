@@ -14,4 +14,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="play">Play</string>
+    <string name="placeholder_username">USERNAME</string>
+    <string name="exta_kullanici_adi">KULLANICI_ADI</string>
 </resources>

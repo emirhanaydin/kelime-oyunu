@@ -316,7 +316,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            AppDatabase.deleteDatabase(getApplicationContext());
+//            AppDatabase.deleteDatabase(getApplicationContext());
             AppDatabase appDatabase = AppDatabase.getInstance(getApplicationContext());
             Kullanici kullanici = appDatabase.kullaniciDao().getKullanici(mEmail);
 
@@ -341,8 +341,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 startActivity(
-                        new Intent(getApplicationContext(), MainActivity.class)
-                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        new Intent(getApplicationContext(), HomeActivity.class)
+                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                .putExtra(getString(R.string.exta_kullanici_adi), mEmail));
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
