@@ -16,5 +16,9 @@
     </string>
     <string name="play">Play</string>
     <string name="placeholder_username">USERNAME</string>
+    <string name="placeholder_word">WORD</string>
+    <string name="placeholder_time">0.00</string>
     <string name="exta_kullanici_adi">KULLANICI_ADI</string>
+    <string name="empty"> </string>
+    <string name="lorem_ipsum">Duis venenatis porttitor massa, ac porttitor elit hendrerit at. Integer ac imperdiet nunc, et vulputate sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</string>
 </resources>
