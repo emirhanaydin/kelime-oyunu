@@ -14,11 +14,12 @@ import com.example.kelimebulma.model.Puan;
 
 @Database(entities = {Kelime.class, Kullanici.class, Puan.class}, version = 1)
 abstract class AppDatabase extends RoomDatabase {
+    private static final String DATABASE_NAME = "kelimeoyunu.db";
     private static AppDatabase instance;
 
     public synchronized static AppDatabase getInstance(Context context) {
         if (instance == null)
-            instance = Room.databaseBuilder(context, AppDatabase.class, "kelimeoyunu.db")
+            instance = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME)
                     .allowMainThreadQueries()
                     .build();
 
@@ -27,6 +28,10 @@ abstract class AppDatabase extends RoomDatabase {
 
     public synchronized static void destroyInstance() {
         instance = null;
+    }
+
+    public synchronized static void deleteDatabase(Context context) {
+        context.deleteDatabase(DATABASE_NAME);
     }
 
     public abstract KelimeDao kelimeDao();

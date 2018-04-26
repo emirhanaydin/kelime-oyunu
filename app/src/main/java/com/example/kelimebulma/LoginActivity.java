@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -315,13 +316,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
+            AppDatabase.deleteDatabase(getApplicationContext());
             AppDatabase appDatabase = AppDatabase.getInstance(getApplicationContext());
             Kullanici kullanici = appDatabase.kullaniciDao().getKullanici(mEmail);
 
             if (kullanici != null)
                 return kullanici.sifre.equals(mPassword);
 
-            kullanici = new Kullanici("ad", "soyad", "test", mEmail, mPassword);
+            //TODO: Kullanıcı adını belirlemek için bir yöntem oluştur
+            kullanici = new Kullanici("ad", "soyad", mEmail, mEmail, mPassword);
             try {
                 appDatabase.kullaniciDao().ekle(kullanici);
             } catch (Exception e) {
@@ -337,6 +340,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                startActivity(
+                        new Intent(getApplicationContext(), MainActivity.class)
+                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
