@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
+    private static String mKullaniciAdi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,8 +16,9 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         TextView textView = findViewById(R.id.textViewKullaniciAdi);
-        String kullaniciAdi = getIntent().getStringExtra(getString(R.string.exta_username));
-        textView.setText(kullaniciAdi);
+        if (mKullaniciAdi == null)
+            mKullaniciAdi = getIntent().getStringExtra(getString(R.string.exta_username));
+        textView.setText(mKullaniciAdi);
 
         Button playButton = findViewById(R.id.buttonOyna);
         playButton.setOnClickListener(new View.OnClickListener() {
