@@ -26,7 +26,7 @@ public class GameActivity extends AppCompatActivity {
 
         final TextView timeLeftText = findViewById(R.id.timeLeft);
 
-        final DecimalFormat df = new DecimalFormat("0.00##");
+        final DecimalFormat df = new DecimalFormat("0.0");
         timeLeftText.setText(df.format(TOTAL_TIME_IN_SECS));
 
         mTimer = new CountDownTimer(TOTAL_TIME_IN_SECS * 1000, 10) {

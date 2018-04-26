@@ -15,7 +15,7 @@
     <string name="play">Play</string>
     <string name="placeholder_username" translatable="false">USERNAME</string>
     <string name="placeholder_word" translatable="false">WORD</string>
-    <string name="placeholder_time" translatable="false">0.00</string>
+    <string name="placeholder_time" translatable="false">0.0</string>
     <string name="exta_username" translatable="false">USERNAME</string>
     <string name="empty" translatable="false"> </string>
     <string name="lorem_ipsum" translatable="false">Duis venenatis porttitor massa, ac porttitor elit hendrerit at. Integer ac imperdiet nunc, et vulputate sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</string>
