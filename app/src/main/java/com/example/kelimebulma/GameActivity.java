@@ -4,7 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.concurrent.ScheduledExecutorService;
@@ -12,7 +16,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends AppCompatActivity {
-    static final int TOTAL_TIME_IN_SECS = 3;
+    static final int TOTAL_TIME_IN_SECS = 30;
     CountDownTimer mTimer;
 
     @Override
@@ -51,5 +55,28 @@ public class GameActivity extends AppCompatActivity {
                 mTimer.start();
             }
         }, 1, TimeUnit.SECONDS);
+
+        final EditText inputText = findViewById(R.id.inputText);
+        inputText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() != KeyEvent.ACTION_DOWN) return false;
+
+                switch (keyCode) {
+                    case KeyEvent.KEYCODE_DPAD_CENTER:
+                    case KeyEvent.KEYCODE_ENTER:
+                        girdiKontrolu(inputText.getText().toString());
+                        return true;
+                }
+
+                return false;
+            }
+        });
+    }
+
+    private void girdiKontrolu(String girdi) {
+        String message = girdi.equals("test") ? "DOĞRU!" : "YANLIŞ!";
+
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }
