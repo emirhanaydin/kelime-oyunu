@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kelimebulma.model.Soru;
+
 import java.text.DecimalFormat;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -19,6 +21,9 @@ public class GameActivity extends AppCompatActivity {
     CountDownTimer mTimer;
     int mScore;
     TextView mScoreText;
+    TextView mQuestionText;
+    EditText mInputText;
+    Soru mSoru;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,11 @@ public class GameActivity extends AppCompatActivity {
 
         mScore = 0;
         mScoreText = findViewById(R.id.scoreText);
+        mQuestionText = findViewById(R.id.questionText);
+        mInputText = findViewById(R.id.inputText);
+
+        mSoru = SoruYoneticisi.rastgeleSoruAl(getApplicationContext());
+        mQuestionText.setText(mSoru.soruMetni);
 
         final TextView timeLeftText = findViewById(R.id.timeLeft);
 
@@ -57,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }, 1, TimeUnit.SECONDS);
 
-        final EditText inputText = findViewById(R.id.inputText);
+        final EditText inputText = mInputText;
         inputText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -76,13 +86,14 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void girdiKontrolu(String girdi) {
-        //TODO: Karşılaştırmayı dinamik verilere göre yap
-        //TODO: Doğru ve yanlış durumları için eylem oluştur
-
-        if (girdi.equals("test")) {
+        if (girdi.equals(mSoru.cevap)) {
             mScore++;
             mScoreText.setText(String.valueOf(mScore));
+            mSoru = SoruYoneticisi.rastgeleSoruAl(getApplicationContext());
+            mQuestionText.setText(mSoru.soruMetni);
+            mInputText.setText("");
         } else {
+            //TODO: Yanlış durumu için bir eylem oluştur
             Toast.makeText(this, "YANLIŞ!", Toast.LENGTH_LONG).show();
         }
     }

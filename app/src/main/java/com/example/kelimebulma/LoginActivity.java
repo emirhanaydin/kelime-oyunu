@@ -334,7 +334,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-//            AppDatabase.deleteDatabase(getApplicationContext());
+            AppDatabase.deleteDatabase(context);
+            SoruYoneticisi.sorulariEkle(context);
             AppDatabase appDatabase = AppDatabase.getInstance(context);
             mKullanici = appDatabase.kullaniciDao().getKullanici(email);
 
