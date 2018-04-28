@@ -2,14 +2,21 @@
 <resources>
     <string name="app_name">Kelime Oyunu</string>
     <string name="title_activity_login">Giriş yap</string>
-    <string name="prompt_email">Eposta</string>
+    <string name="prompt_username">Kullanıcı adı</string>
     <string name="prompt_password">Parola (opsiyonel)</string>
     <string name="action_sign_in">Giriş yap ya da kayıt ol</string>
     <string name="action_sign_in_short">Giriş yap</string>
-    <string name="error_invalid_email">Bu eposta adresi geçersiz</string>
+    <string name="error_invalid_username">Bu kullanıcı adı geçersiz</string>
     <string name="error_invalid_password">Bu parola çok kısa</string>
     <string name="error_incorrect_password">Bu parola geçersiz</string>
     <string name="error_field_required">Bu alan gerekli</string>
     <string name="play">Oyna</string>
-    <string name="permission_rationale">Eposta tahminleri için kişiler izni gereklidir.</string>
+    <string name="remaining_time">Süre</string>
+    <string name="score">Skor</string>
+    <string name="best_score">En İyi Skor</string>
+    <string name="best_time">En İyi Zaman</string>
+    <string name="against_time">Zamana Karşı</string>
+    <string name="normal_mode">Normal Mod</string>
+    <string name="reset_database">Veritabanını sıfırla</string>
+    <string name="database_was_reset">Veritabanı sıfırlandı</string>
 </resources>

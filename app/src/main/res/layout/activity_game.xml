@@ -5,46 +5,84 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
-    <RelativeLayout android:id="@+id/RelativeLayout01"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:background="@color/galaz">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp" />
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/timeLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/red"
-            android:gravity="center_horizontal"
-            android:text="@string/placeholder_time"
-            android:layout_centerHorizontal="true"
-            android:textSize="24sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp" />
 
-        <TextView
-            android:layout_marginTop="50dp"
-            android:id="@+id/textView3"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/remaining_time" />
+
+                <TextView
+                    android:id="@+id/timeLeft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/placeholder_time"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/score" />
+
+                <TextView
+                    android:id="@+id/scoreText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/placeholder_score"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="12sp"
             android:text="@string/lorem_ipsum"
-            android:textSize="18sp"
-            android:background="@color/green"/>
+            android:textSize="18sp" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="40dp" />
 
         <EditText
-            android:layout_marginTop="180dp"
             android:id="@+id/inputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,5 +92,5 @@
             android:inputType="text"
             android:text=""
             android:textSize="24sp" />
-    </RelativeLayout>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

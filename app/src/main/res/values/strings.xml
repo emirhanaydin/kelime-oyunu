@@ -1,24 +1,31 @@
 <resources>
-    <string name="app_name">Kelime Bulma</string>
+    <string name="app_name">Kelime Oyunu</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
+    <string name="prompt_username">Username</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_username">This username is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
     <string name="play">Play</string>
-    <string name="placeholder_username">USERNAME</string>
-    <string name="placeholder_word">WORD</string>
-    <string name="placeholder_time">0.00</string>
-    <string name="exta_kullanici_adi">KULLANICI_ADI</string>
-    <string name="empty"> </string>
-    <string name="lorem_ipsum">Duis venenatis porttitor massa, ac porttitor elit hendrerit at. Integer ac imperdiet nunc, et vulputate sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</string>
+    <string name="placeholder_username" translatable="false">USERNAME</string>
+    <string name="placeholder_word" translatable="false">WORD</string>
+    <string name="placeholder_time" translatable="false">0.0</string>
+    <string name="placeholder_score" translatable="false">0</string>
+    <string name="exta_username" translatable="false">USERNAME</string>
+    <string name="empty" translatable="false"> </string>
+    <string name="lorem_ipsum" translatable="false">Duis venenatis porttitor massa, ac porttitor elit hendrerit at. Integer ac imperdiet nunc, et vulputate sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</string>
+    <string name="remaining_time">Time</string>
+    <string name="score">Score</string>
+    <string name="best_score">Best Score</string>
+    <string name="best_time">Best Time</string>
+    <string name="against_time">Against Time</string>
+    <string name="normal_mode">Normal Mode</string>
+    <string name="reset_database">Reset the database</string>
+    <string name="database_was_reset">The database was reset</string>
+    <string name="ten_word">10 Word</string>
 </resources>

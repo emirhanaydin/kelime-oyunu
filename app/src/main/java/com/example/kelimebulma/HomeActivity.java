@@ -8,21 +8,29 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        TextView textView = findViewById(R.id.textViewKullaniciAdi);
-        String kullaniciAdi = getIntent().getStringExtra(getString(R.string.exta_kullanici_adi));
-        textView.setText(kullaniciAdi);
+        TextView textView = findViewById(R.id.usernameLabel);
 
-        Button playButton = findViewById(R.id.buttonOyna);
+        textView.setText(getIntent().getStringExtra(getString(R.string.exta_username)));
+
+        Button playButton = findViewById(R.id.againstTimeButton);
+        Button playButton2 = findViewById(R.id.playButton);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), GameActivity.class));
+            }
+        });
+
+
+        playButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), GameActivity2.class));
             }
         });
     }
