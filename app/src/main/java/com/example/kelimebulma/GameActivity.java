@@ -86,7 +86,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void girdiKontrolu(String girdi) {
-        if (girdi.equals(mSoru.cevap)) {
+        if (girdi.equalsIgnoreCase(mSoru.cevap)) {
             mScore++;
             mScoreText.setText(String.valueOf(mScore));
             mSoru = SoruYoneticisi.rastgeleSoruAl(getApplicationContext());
