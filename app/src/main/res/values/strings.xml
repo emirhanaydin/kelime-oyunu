@@ -12,7 +12,7 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
-    <string name="select_game_mode">Select Game Mode</string>
+    <string name="play">Play</string>
     <string name="placeholder_username" translatable="false">USERNAME</string>
     <string name="placeholder_word" translatable="false">WORD</string>
     <string name="placeholder_time" translatable="false">0.0</string>

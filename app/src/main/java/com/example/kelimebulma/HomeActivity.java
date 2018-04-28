@@ -13,11 +13,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        TextView textView = findViewById(R.id.textViewKullaniciAdi);
+        TextView textView = findViewById(R.id.usernameLabel);
 
         textView.setText(getIntent().getStringExtra(getString(R.string.exta_username)));
 
-        Button playButton = findViewById(R.id.buttonOyna);
+        Button playButton = findViewById(R.id.againstTimeButton);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
