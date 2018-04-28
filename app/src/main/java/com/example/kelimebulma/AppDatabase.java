@@ -15,23 +15,34 @@ import com.example.kelimebulma.model.Soru;
 @Database(entities = {Soru.class, Kullanici.class, Puan.class}, version = 1)
 abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "kelimeoyunu.db";
-    private static AppDatabase instance;
+    private static AppDatabase mInstance;
 
     public synchronized static AppDatabase getInstance(Context context) {
-        if (instance == null)
-            instance = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME)
+        if (mInstance == null) {
+            boolean createDatabase = !doesDatabaseExist(context);
+
+            mInstance = Room.databaseBuilder(context, AppDatabase.class, DATABASE_NAME)
                     .allowMainThreadQueries()
                     .build();
 
-        return instance;
+            if (createDatabase)
+                SoruYoneticisi.sorulariEkle(context);
+        }
+
+        return mInstance;
     }
 
-    public synchronized static void destroyInstance() {
-        instance = null;
+    private static boolean doesDatabaseExist(Context context) {
+        return context.getDatabasePath(DATABASE_NAME).exists();
+    }
+
+    private synchronized static void destroyInstance() {
+        mInstance = null;
     }
 
     public synchronized static void deleteDatabase(Context context) {
         context.deleteDatabase(DATABASE_NAME);
+        destroyInstance();
     }
 
     public abstract SoruDao soruDao();
