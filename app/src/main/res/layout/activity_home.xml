@@ -11,14 +11,11 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/app_name"
-            android:textSize="48sp"
-            android:textStyle="bold" />
+            android:src="@drawable/kelime" />
 
         <Space
             android:layout_width="match_parent"
