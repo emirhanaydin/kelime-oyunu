@@ -5,26 +5,49 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="79dp"
+        android:background="@color/galaz">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textViewKullaniciAdi"
+            android:background="@color/idk"
+            android:src="@drawable/kelime" />
 
         <TextView
             android:id="@+id/textViewKullaniciAdi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="58dp"
+            android:background="@color/green"
             android:gravity="center_horizontal"
             android:text="@string/placeholder_username"
             android:textSize="24sp" />
 
         <Button
             android:id="@+id/buttonOyna"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/imageView1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="29dp"
+            android:background="@color/red"
             android:text="@string/play"
+            android:textAlignment="center"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="503dp" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
