@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/kelime" />
+                android:src="@drawable/logo" />
 
             <Space
                 android:layout_width="match_parent"

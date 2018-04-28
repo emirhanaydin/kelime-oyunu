@@ -12,11 +12,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/kelime" />
+            android:src="@drawable/logo" />
 
         <Space
             android:layout_width="match_parent"
