@@ -334,6 +334,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
+            //TODO: Yalnızca hata durumlarında var olan veritabanı silinmeli ve veriler yeniden yüklenmeli.
             AppDatabase.deleteDatabase(context);
             SoruYoneticisi.sorulariEkle(context);
             AppDatabase appDatabase = AppDatabase.getInstance(context);
