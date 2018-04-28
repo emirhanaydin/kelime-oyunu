@@ -1,6 +1,5 @@
 package com.example.kelimebulma;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -45,9 +44,6 @@ public class GameActivity extends AppCompatActivity {
             public void onFinish() {
                 timeLeftText.setText(df.format(0));
 
-                startActivity(
-                        new Intent(getApplicationContext(), HomeActivity.class)
-                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 finish();
             }
         };

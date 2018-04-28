@@ -8,17 +8,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
-    private static String mKullaniciAdi;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         TextView textView = findViewById(R.id.textViewKullaniciAdi);
-        if (mKullaniciAdi == null)
-            mKullaniciAdi = getIntent().getStringExtra(getString(R.string.exta_username));
-        textView.setText(mKullaniciAdi);
+
+        textView.setText(getIntent().getStringExtra(getString(R.string.exta_username)));
 
         Button playButton = findViewById(R.id.buttonOyna);
         playButton.setOnClickListener(new View.OnClickListener() {
