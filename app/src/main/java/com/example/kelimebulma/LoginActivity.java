@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = findViewById(R.id.email);
+        mEmailView = findViewById(R.id.username);
         populateAutoComplete();
 
         mPasswordView = findViewById(R.id.password);
@@ -166,8 +166,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
-        } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
+        } else if (!isUsernameValid(email)) {
+            mEmailView.setError(getString(R.string.error_invalid_username));
             focusView = mEmailView;
             cancel = true;
         }
@@ -185,9 +185,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
+    private boolean isUsernameValid(String username) {
+        return username.length() > 4
+                && username.matches("^([0-9]|[a-z]|[A-Z]|_|-)[A-Za-z0-9_-]*$");
     }
 
     private boolean isPasswordValid(String password) {
@@ -275,7 +275,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             startActivity(
                     new Intent(getApplicationContext(), HomeActivity.class)
                             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                            .putExtra(getString(R.string.exta_username), kullanici.eposta));
+                            .putExtra(getString(R.string.exta_username), kullanici.kullaniciAdi));
             finish();
         } else {
             mPasswordView.setError(getString(R.string.error_incorrect_password));
@@ -300,13 +300,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public static class LoginRequest {
         LoginActivity mLoginActivity;
         Context mContext;
-        String mEmail;
+        String mUsername;
         String mPassword;
 
-        LoginRequest(LoginActivity loginActivity, Context context, String mEmail, String mPassword) {
+        LoginRequest(LoginActivity loginActivity, Context context, String mUsername, String mPassword) {
             this.mLoginActivity = loginActivity;
             this.mContext = context;
-            this.mEmail = mEmail;
+            this.mUsername = mUsername;
             this.mPassword = mPassword;
         }
     }
@@ -324,7 +324,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mLoginRequest = loginRequests[0];
 
             Context context = mLoginRequest.mContext;
-            String email = mLoginRequest.mEmail;
+            String username = mLoginRequest.mUsername;
             String password = mLoginRequest.mPassword;
 
             try {
@@ -338,13 +338,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             AppDatabase.deleteDatabase(context);
             SoruYoneticisi.sorulariEkle(context);
             AppDatabase appDatabase = AppDatabase.getInstance(context);
-            mKullanici = appDatabase.kullaniciDao().getKullanici(email);
+
+            mKullanici = appDatabase.kullaniciDao().getKullanici(username);
 
             if (mKullanici != null)
                 return mKullanici.sifre.equals(password);
 
             //TODO: Kullanıcı adını belirlemek için bir yöntem oluştur
-            mKullanici = new Kullanici("ad", "soyad", email, email, password);
+            mKullanici = new Kullanici(username, password);
             try {
                 appDatabase.kullaniciDao().ekle(mKullanici);
             } catch (Exception e) {
