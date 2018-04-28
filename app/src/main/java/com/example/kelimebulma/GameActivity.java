@@ -18,11 +18,16 @@ import java.util.concurrent.TimeUnit;
 public class GameActivity extends AppCompatActivity {
     static final int TOTAL_TIME_IN_SECS = 30;
     CountDownTimer mTimer;
+    int mScore;
+    TextView mScoreText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        mScore = 0;
+        mScoreText = findViewById(R.id.scoreText);
 
         final TextView timeLeftText = findViewById(R.id.timeLeft);
 
@@ -77,8 +82,12 @@ public class GameActivity extends AppCompatActivity {
     private void girdiKontrolu(String girdi) {
         //TODO: Karşılaştırmayı dinamik verilere göre yap
         //TODO: Doğru ve yanlış durumları için eylem oluştur
-        String message = girdi.equals("test") ? "DOĞRU!" : "YANLIŞ!";
 
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        if (girdi.equals("test")) {
+            mScore++;
+            mScoreText.setText(String.valueOf(mScore));
+        } else {
+            Toast.makeText(this, "YANLIŞ!", Toast.LENGTH_LONG).show();
+        }
     }
 }

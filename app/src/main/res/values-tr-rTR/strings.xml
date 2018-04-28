@@ -12,4 +12,6 @@
     <string name="error_field_required">Bu alan gerekli</string>
     <string name="play">Oyna</string>
     <string name="permission_rationale">Eposta tahminleri için kişiler izni gereklidir.</string>
+    <string name="remaining_time">Kalan Süre</string>
+    <string name="score">Skor</string>
 </resources>
