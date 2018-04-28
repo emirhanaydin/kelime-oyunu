@@ -5,14 +5,14 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-import com.example.kelimebulma.dao.KelimeDao;
 import com.example.kelimebulma.dao.KullaniciDao;
 import com.example.kelimebulma.dao.PuanDao;
-import com.example.kelimebulma.model.Kelime;
+import com.example.kelimebulma.dao.SoruDao;
 import com.example.kelimebulma.model.Kullanici;
 import com.example.kelimebulma.model.Puan;
+import com.example.kelimebulma.model.Soru;
 
-@Database(entities = {Kelime.class, Kullanici.class, Puan.class}, version = 1)
+@Database(entities = {Soru.class, Kullanici.class, Puan.class}, version = 1)
 abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "kelimeoyunu.db";
     private static AppDatabase instance;
@@ -34,7 +34,7 @@ abstract class AppDatabase extends RoomDatabase {
         context.deleteDatabase(DATABASE_NAME);
     }
 
-    public abstract KelimeDao kelimeDao();
+    public abstract SoruDao soruDao();
 
     public abstract KullaniciDao kullaniciDao();
 
