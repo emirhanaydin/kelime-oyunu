@@ -19,14 +19,14 @@
     <string name="extra_time" translatable="false">TIME</string>
     <string name="empty" translatable="false"> </string>
     <string name="lorem_ipsum" translatable="false">Duis venenatis porttitor massa, ac porttitor elit hendrerit at. Integer ac imperdiet nunc, et vulputate sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</string>
-    <string name="remaining_time">Remaining Time</string>
+    <string name="remaining_time">Remaining time</string>
     <string name="score">Score</string>
-    <string name="best_score">Best Score</string>
-    <string name="best_time">Best Time</string>
-    <string name="against_time">Against Time</string>
-    <string name="normal_mode">Normal Mode</string>
+    <string name="best_score">Best score</string>
+    <string name="best_time">Best time</string>
+    <string name="against_time">Against time</string>
+    <string name="normal_mode">Normal</string>
     <string name="reset_database">Reset the database</string>
     <string name="database_was_reset">The database was reset</string>
     <string name="error_wrong_answer">Wrong answer</string>
-    <string name="elapsed_time">Elapsed Time</string>
+    <string name="elapsed_time">Elapsed time</string>
 </resources>

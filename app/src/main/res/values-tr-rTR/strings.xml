@@ -10,14 +10,14 @@
     <string name="error_incorrect_password">Bu parola geçersiz</string>
     <string name="error_field_required">Bu alan gerekli</string>
     <string name="play">Oyna</string>
-    <string name="remaining_time">Kalan Süre</string>
+    <string name="remaining_time">Kalan süre</string>
     <string name="score">Skor</string>
-    <string name="best_score">En İyi Skor</string>
-    <string name="best_time">En İyi Zaman</string>
-    <string name="against_time">Zamana Karşı</string>
-    <string name="normal_mode">Normal Mod</string>
+    <string name="best_score">En iyi skor</string>
+    <string name="best_time">En iyi zaman</string>
+    <string name="against_time">Zamana karşı</string>
+    <string name="normal_mode">Normal</string>
     <string name="reset_database">Veritabanını sıfırla</string>
     <string name="database_was_reset">Veritabanı sıfırlandı</string>
     <string name="error_wrong_answer">Hatalı yanıt</string>
-    <string name="elapsed_time">Geçen Süre</string>
+    <string name="elapsed_time">Geçen süre</string>
 </resources>
