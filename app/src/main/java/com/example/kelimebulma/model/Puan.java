@@ -10,16 +10,16 @@ import android.arch.persistence.room.PrimaryKey;
         foreignKeys = @ForeignKey(
                 entity = Kullanici.class,
                 parentColumns = "id",
-                childColumns = "kullanici"),
-        indices = @Index(value = {"kullanici"}, unique = true))
+                childColumns = "kullanici_id"),
+        indices = @Index(value = {"kullanici_id"}, unique = true))
 public class Puan {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name = "kullanici")
-    public int kullanici;
-    @ColumnInfo(name = "puan")
-    public int puan;
-    @ColumnInfo(name = "tip")
-    public String tip;
+    @ColumnInfo(name = "kullanici_id")
+    public int kullaniciId;
+    @ColumnInfo(name = "skor")
+    public int skor;
+    @ColumnInfo(name = "sure_ms")
+    public int sureMs;
 }
