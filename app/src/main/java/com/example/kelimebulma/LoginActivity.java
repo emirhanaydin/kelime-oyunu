@@ -197,7 +197,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             startActivity(
                     new Intent(getApplicationContext(), HomeActivity.class)
                             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                            .putExtra(getString(R.string.exta_username), kullanici.kullaniciAdi));
+                            .putExtra(getString(R.string.extra_username), kullanici.kullaniciAdi));
             finish();
         } else {
             mPasswordView.setError(getString(R.string.error_incorrect_password));

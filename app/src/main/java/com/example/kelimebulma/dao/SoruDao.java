@@ -9,20 +9,23 @@ import com.example.kelimebulma.model.Soru;
 
 @Dao
 public interface SoruDao {
-    @Query("SELECT soru_metni FROM Soru WHERE id = :id")
+    @Query("SELECT soru_metni FROM soru WHERE id = :id")
     String getSoruMetni(int id);
 
-    @Query("UPDATE Soru SET soru_metni = :soruMetni WHERE id = :id")
+    @Query("UPDATE soru SET soru_metni = :soruMetni WHERE id = :id")
     void setSoruMetni(int id, String soruMetni);
 
-    @Query("SELECT cevap FROM Soru WHERE id = :id")
+    @Query("SELECT cevap FROM soru WHERE id = :id")
     String getCevap(int id);
 
-    @Query("UPDATE Soru SET cevap = :cevap WHERE id = :id")
+    @Query("UPDATE soru SET cevap = :cevap WHERE id = :id")
     void setCevap(int id, String cevap);
 
-    @Query("SELECT * FROM Soru WHERE id = :id")
+    @Query("SELECT * FROM soru WHERE id = :id")
     Soru getSoru(int id);
+
+    @Query("SELECT * FROM soru ORDER BY RANDOM() LIMIT 1;")
+    Soru getRandom();
 
     @Insert
     void ekle(Soru... sorular);

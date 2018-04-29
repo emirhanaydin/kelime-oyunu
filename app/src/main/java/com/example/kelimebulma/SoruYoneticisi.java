@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.example.kelimebulma.model.Soru;
 
-import java.util.Random;
-
 public class SoruYoneticisi {
     private static final Soru[] SORULAR = new Soru[]{
             new Soru("Tıbbi lazımlık.", "ördek"),
@@ -41,10 +39,6 @@ public class SoruYoneticisi {
     }
 
     public static Soru rastgeleSoruAl(Context context) {
-        Random random = new Random();
-
-        //TODO: Anahtar değerini kullanmaktan daha iyi bir yöntem bul
-        return AppDatabase.getInstance(context).soruDao()
-                .getSoru(random.nextInt(SORULAR.length));
+        return AppDatabase.getInstance(context).soruDao().getRandom();
     }
 }

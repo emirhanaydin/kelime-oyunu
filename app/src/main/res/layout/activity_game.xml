@@ -34,7 +34,7 @@
                     android:text="@string/remaining_time" />
 
                 <TextView
-                    android:id="@+id/timeLeft"
+                    android:id="@+id/timeText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"

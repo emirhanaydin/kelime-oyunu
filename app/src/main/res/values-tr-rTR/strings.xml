@@ -19,4 +19,5 @@
     <string name="normal_mode">Normal Mod</string>
     <string name="reset_database">Veritabanını sıfırla</string>
     <string name="database_was_reset">Veritabanı sıfırlandı</string>
+    <string name="error_wrong_answer">Hatalı yanıt</string>
 </resources>

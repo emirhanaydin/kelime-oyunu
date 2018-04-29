@@ -61,7 +61,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/bestTimeValue"
+                        android:id="@+id/bestTimeText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -84,7 +84,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/bestScoreValue"
+                        android:id="@+id/bestScoreText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"

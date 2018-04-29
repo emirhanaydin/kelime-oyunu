@@ -1,5 +1,7 @@
 package com.example.kelimebulma;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +9,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kelimebulma.model.Soru;
 
@@ -38,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
         mSoru = SoruYoneticisi.rastgeleSoruAl(getApplicationContext());
         mQuestionText.setText(mSoru.soruMetni);
 
-        final TextView timeLeftText = findViewById(R.id.timeLeft);
+        final TextView timeLeftText = findViewById(R.id.timeText);
 
         final DecimalFormat df = new DecimalFormat("0.0");
         timeLeftText.setText(df.format(TOTAL_TIME_IN_SECS));
@@ -53,6 +54,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 timeLeftText.setText(df.format(0));
+
+                setResult(Activity.RESULT_OK, new Intent().putExtra(getString(R.string.extra_score), mScore));
 
                 finish();
             }
@@ -93,8 +96,7 @@ public class GameActivity extends AppCompatActivity {
             mQuestionText.setText(mSoru.soruMetni);
             mInputText.setText("");
         } else {
-            //TODO: Yanlış durumu için bir eylem oluştur
-            Toast.makeText(this, "YANLIŞ!", Toast.LENGTH_LONG).show();
+            mInputText.setError(getString(R.string.error_wrong_answer));
         }
     }
 }
