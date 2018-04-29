@@ -27,18 +27,16 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
 
             <ImageView
-                android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/logo" />
+                android:src="@mipmap/logo" />
 
             <Space
                 android:layout_width="match_parent"

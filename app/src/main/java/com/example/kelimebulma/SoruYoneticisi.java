@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.kelimebulma.model.Soru;
 
-public class SoruYoneticisi {
+class SoruYoneticisi {
     private static final Soru[] SORULAR = new Soru[]{
             new Soru("Tıbbi lazımlık.", "ördek"),
             new Soru("Sünnet sponsoru.", "kirve"),

@@ -10,9 +10,9 @@ public class Soru {
     public long id;
 
     @ColumnInfo(name = "soru_metni")
-    public String soruMetni;
+    public final String soruMetni;
     @ColumnInfo(name = "cevap")
-    public String cevap;
+    public final String cevap;
 
     public Soru(String soruMetni, String cevap) {
         this.soruMetni = soruMetni;

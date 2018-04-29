@@ -12,11 +12,11 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/logo" />
+            android:padding="20dp"
+            android:src="@mipmap/logo" />
 
         <Space
             android:layout_width="match_parent"
@@ -53,7 +53,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/bestTimeLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -76,7 +75,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/bestScoreLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
@@ -98,7 +96,6 @@
                 android:layout_height="80dp" />
 
             <TextView
-                android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -129,7 +126,6 @@
                     android:textSize="36sp" />
 
                 <View
-                    android:id="@+id/view"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@android:color/darker_gray" />

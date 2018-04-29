@@ -189,7 +189,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
-    public void onLoginTaskExecute(final Boolean success, Kullanici kullanici) {
+    private void onLoginTaskExecute(final Boolean success, Kullanici kullanici) {
         mAuthTask = null;
         showProgress(false);
 
@@ -205,17 +205,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    public void onLoginTaskCancelled() {
+    private void onLoginTaskCancelled() {
         mAuthTask = null;
         showProgress(false);
     }
 
 
-    public static class LoginRequest {
-        LoginActivity mLoginActivity;
-        Context mContext;
-        String mUsername;
-        String mPassword;
+    static class LoginRequest {
+        final LoginActivity mLoginActivity;
+        final Context mContext;
+        final String mUsername;
+        final String mPassword;
 
         LoginRequest(LoginActivity loginActivity, Context context, String mUsername, String mPassword) {
             this.mLoginActivity = loginActivity;
@@ -229,7 +229,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public static class UserLoginTask extends AsyncTask<LoginRequest, Void, Boolean> {
+    static class UserLoginTask extends AsyncTask<LoginRequest, Void, Boolean> {
         LoginRequest mLoginRequest;
         Kullanici mKullanici;
 

@@ -12,8 +12,8 @@ import com.example.kelimebulma.model.Kullanici;
 import com.example.kelimebulma.model.Puan;
 
 public class HomeActivity extends AppCompatActivity {
-    public static final int SCORE_REQUEST_CODE = 1;
-    public static final int TIME_REQUEST_CODE = 2;
+    private static final int SCORE_REQUEST_CODE = 1;
+    private static final int TIME_REQUEST_CODE = 2;
 
     public static final String EXTRA_MODE = "EXTRA_MODE";
     public static final String AGAINST_TIME_MODE = "AGAINST_TIME_MODE";

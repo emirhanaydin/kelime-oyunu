@@ -17,11 +17,11 @@ public class Puan {
     public long id;
 
     @ColumnInfo(name = "kullanici_id")
-    public long kullaniciId;
+    public final long kullaniciId;
     @ColumnInfo(name = "skor")
-    public int skor;
+    public final int skor;
     @ColumnInfo(name = "sure_ms")
-    public long sureMs;
+    public final long sureMs;
 
     public Puan(long kullaniciId, int skor, long sureMs) {
         this.kullaniciId = kullaniciId;

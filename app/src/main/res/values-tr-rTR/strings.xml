@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kelime Oyunu</string>
-    <string name="title_activity_login">Giriş yap</string>
     <string name="prompt_username">Kullanıcı adı</string>
     <string name="prompt_password">Parola (opsiyonel)</string>
     <string name="action_sign_in">Giriş yap ya da kayıt ol</string>

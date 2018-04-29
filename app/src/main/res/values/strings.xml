@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Kelime Oyunu</string>
-    <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
     <string name="prompt_username">Username</string>
@@ -13,7 +12,6 @@
     <string name="error_field_required">This field is required</string>
     <string name="play">Play</string>
     <string name="placeholder_username" translatable="false">USERNAME</string>
-    <string name="placeholder_word" translatable="false">WORD</string>
     <string name="placeholder_time" translatable="false">0.0</string>
     <string name="placeholder_score" translatable="false">0</string>
     <string name="extra_username" translatable="false">USERNAME</string>

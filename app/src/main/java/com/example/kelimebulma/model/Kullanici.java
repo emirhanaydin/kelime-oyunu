@@ -12,9 +12,9 @@ public class Kullanici {
     public long id;
 
     @ColumnInfo(name = "kullanici_adi")
-    public String kullaniciAdi;
+    public final String kullaniciAdi;
     @ColumnInfo(name = "sifre")
-    public String sifre;
+    public final String sifre;
 
     public Kullanici(String kullaniciAdi, String sifre) {
         this.kullaniciAdi = kullaniciAdi;
