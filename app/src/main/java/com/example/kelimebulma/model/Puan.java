@@ -22,4 +22,10 @@ public class Puan {
     public int skor;
     @ColumnInfo(name = "sure_ms")
     public int sureMs;
+
+    public Puan(int kullaniciId, int skor, int sureMs) {
+        this.kullaniciId = kullaniciId;
+        this.skor = skor;
+        this.sureMs = sureMs;
+    }
 }

@@ -12,13 +12,12 @@ import android.widget.TextView;
 
 import com.example.kelimebulma.model.Soru;
 
-import java.text.DecimalFormat;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends AppCompatActivity {
-    static final int TOTAL_TIME_IN_SECS = 30;
+    static final long TOTAL_TIME_MILLIS = 30000;
     CountDownTimer mTimer;
     int mScore;
     TextView mScoreText;
@@ -41,19 +40,17 @@ public class GameActivity extends AppCompatActivity {
 
         final TextView timeLeftText = findViewById(R.id.timeText);
 
-        final DecimalFormat df = new DecimalFormat("0.0");
-        timeLeftText.setText(df.format(TOTAL_TIME_IN_SECS));
+        timeLeftText.setText(GameHelper.getTimeString(TOTAL_TIME_MILLIS));
 
-        mTimer = new CountDownTimer(TOTAL_TIME_IN_SECS * 1000, 10) {
+        mTimer = new CountDownTimer(TOTAL_TIME_MILLIS, 100) {
             @Override
             public void onTick(long millisUntilFinished) {
-                float secondsLeft = (float) millisUntilFinished / 1000;
-                timeLeftText.setText(df.format(secondsLeft));
+                timeLeftText.setText(GameHelper.getTimeString(millisUntilFinished));
             }
 
             @Override
             public void onFinish() {
-                timeLeftText.setText(df.format(0));
+                timeLeftText.setText(GameHelper.getTimeString(0));
 
                 setResult(Activity.RESULT_OK, new Intent().putExtra(getString(R.string.extra_score), mScore));
 
