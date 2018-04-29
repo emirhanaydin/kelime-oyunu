@@ -7,7 +7,7 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "soru")
 public class Soru {
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public long id;
 
     @ColumnInfo(name = "soru_metni")
     public String soruMetni;

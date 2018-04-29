@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
                     if (timeMs >= mPuan.sureMs)
                         return;
 
-                puanDao.setSureMs(mPuan.id, (int) timeMs);
+                puanDao.setSureMs(mPuan.id, timeMs);
 
                 mTimeText.setText(GameHelper.getTimeString(timeMs));
                 break;

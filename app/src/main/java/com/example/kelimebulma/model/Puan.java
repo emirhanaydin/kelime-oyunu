@@ -14,16 +14,16 @@ import android.arch.persistence.room.PrimaryKey;
         indices = @Index(value = {"kullanici_id"}, unique = true))
 public class Puan {
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public long id;
 
     @ColumnInfo(name = "kullanici_id")
-    public int kullaniciId;
+    public long kullaniciId;
     @ColumnInfo(name = "skor")
     public int skor;
     @ColumnInfo(name = "sure_ms")
-    public int sureMs;
+    public long sureMs;
 
-    public Puan(int kullaniciId, int skor, int sureMs) {
+    public Puan(long kullaniciId, int skor, long sureMs) {
         this.kullaniciId = kullaniciId;
         this.skor = skor;
         this.sureMs = sureMs;

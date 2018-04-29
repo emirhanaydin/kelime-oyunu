@@ -9,7 +9,7 @@ import android.arch.persistence.room.PrimaryKey;
         indices = {@Index(value = {"kullanici_adi"}, unique = true)})
 public class Kullanici {
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    public long id;
 
     @ColumnInfo(name = "kullanici_adi")
     public String kullaniciAdi;
