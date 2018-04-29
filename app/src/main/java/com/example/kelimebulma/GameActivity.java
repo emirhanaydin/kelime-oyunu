@@ -84,7 +84,7 @@ public class GameActivity extends AppCompatActivity {
                             checkInputText();
                         }
 
-                        return false;
+                        return true;
                     }
                 });
                 break;
@@ -127,7 +127,7 @@ public class GameActivity extends AppCompatActivity {
                             }
                         }
 
-                        return false;
+                        return true;
                     }
                 });
                 break;
