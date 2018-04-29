@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -77,10 +77,10 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }, 1, TimeUnit.SECONDS);
 
-                mInputText.setOnKeyListener(new View.OnKeyListener() {
+                mInputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        if (isKeyEventValid(keyCode, event)) {
+                    public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                        if (isEditorActionValid(id)) {
                             checkInputText();
                         }
 
@@ -111,10 +111,10 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }, 1000, 100);
 
-                mInputText.setOnKeyListener(new View.OnKeyListener() {
+                mInputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                     @Override
-                    public boolean onKey(View v, int keyCode, KeyEvent event) {
-                        if (isKeyEventValid(keyCode, event)) {
+                    public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                        if (isEditorActionValid(id)) {
                             checkInputText();
 
                             if (mScore >= TARGET_SCORE) {
@@ -134,18 +134,11 @@ public class GameActivity extends AppCompatActivity {
             default:
                 throw new IllegalArgumentException("Game mode value is wrong.");
         }
+
     }
 
-    private boolean isKeyEventValid(int keyCode, KeyEvent event) {
-        if (event.getAction() != KeyEvent.ACTION_DOWN) return false;
-
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_DPAD_CENTER:
-            case KeyEvent.KEYCODE_ENTER:
-                return true;
-        }
-
-        return false;
+    private boolean isEditorActionValid(int id) {
+        return id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL;
     }
 
     private void checkInputText() {
