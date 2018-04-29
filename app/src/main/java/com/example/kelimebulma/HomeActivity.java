@@ -13,6 +13,12 @@ import com.example.kelimebulma.model.Puan;
 
 public class HomeActivity extends AppCompatActivity {
     public static final int SCORE_REQUEST_CODE = 1;
+    public static final int TIME_REQUEST_CODE = 2;
+
+    public static final String EXTRA_MODE = "EXTRA_MODE";
+    public static final String AGAINST_TIME_MODE = "AGAINST_TIME_MODE";
+    public static final String NORMAL_MODE = "NORMAL_MODE";
+
     private TextView mUsernameText;
     private TextView mTimeText;
     private TextView mScoreText;
@@ -30,13 +36,25 @@ public class HomeActivity extends AppCompatActivity {
 
         initializeUser(getIntent().getStringExtra(getString(R.string.extra_username)));
 
-        Button playButton = findViewById(R.id.againstTimeButton);
-        playButton.setOnClickListener(new View.OnClickListener() {
+        Button againstTimeButton = findViewById(R.id.againstTimeButton);
+        againstTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivityForResult(
-                        new Intent(getApplicationContext(), GameActivity.class),
+                        new Intent(getApplicationContext(), GameActivity.class)
+                                .putExtra(EXTRA_MODE, AGAINST_TIME_MODE),
                         SCORE_REQUEST_CODE);
+            }
+        });
+
+        Button normalModeButton = findViewById(R.id.normal_mode_button);
+        normalModeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(
+                        new Intent(getApplicationContext(), GameActivity.class)
+                                .putExtra(EXTRA_MODE, NORMAL_MODE),
+                        TIME_REQUEST_CODE);
             }
         });
     }
@@ -45,25 +63,36 @@ public class HomeActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        boolean processing = false;
-        switch (requestCode) {
-            case SCORE_REQUEST_CODE:
-                processing = resultCode == RESULT_OK;
-        }
-        if (!processing) return;
-
-        int score = data.getIntExtra(getString(R.string.extra_score), 0);
-
-        if (score <= mPuan.skor)
+        if (resultCode != RESULT_OK)
             return;
 
         AppDatabase appDatabase = AppDatabase.getInstance(getApplicationContext());
 
         PuanDao puanDao = appDatabase.puanDao();
 
-        puanDao.setSkor(mPuan.id, score);
+        switch (requestCode) {
+            case SCORE_REQUEST_CODE:
+                int score = data.getIntExtra(getString(R.string.extra_score), 0);
 
-        mScoreText.setText(String.valueOf(score));
+                if (score <= mPuan.skor)
+                    return;
+
+                puanDao.setSkor(mPuan.id, score);
+
+                mScoreText.setText(String.valueOf(score));
+                break;
+            case TIME_REQUEST_CODE:
+                long timeMs = data.getLongExtra(getString(R.string.extra_time), 0);
+
+                if (mPuan.sureMs > 0)
+                    if (timeMs >= mPuan.sureMs)
+                        return;
+
+                puanDao.setSureMs(mPuan.id, (int) timeMs);
+
+                mTimeText.setText(GameHelper.getTimeString(timeMs));
+                break;
+        }
     }
 
     private void initializeUser(String username) {

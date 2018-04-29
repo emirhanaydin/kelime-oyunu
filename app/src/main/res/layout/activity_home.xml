@@ -120,7 +120,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/playButton"
+                    android:id="@+id/normal_mode_button"
                     style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

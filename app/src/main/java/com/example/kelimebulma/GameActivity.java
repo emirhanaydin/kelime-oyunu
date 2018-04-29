@@ -12,18 +12,23 @@ import android.widget.TextView;
 
 import com.example.kelimebulma.model.Soru;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class GameActivity extends AppCompatActivity {
-    static final long TOTAL_TIME_MILLIS = 30000;
-    CountDownTimer mTimer;
-    int mScore;
-    TextView mScoreText;
-    TextView mQuestionText;
-    EditText mInputText;
-    Soru mSoru;
+    private CountDownTimer mCountdownTimer;
+    private Timer mTimer;
+    private int mScore;
+    private TextView mScoreText;
+    private TextView mTimeText;
+    private TextView mQuestionText;
+    private EditText mInputText;
+    private Soru mSoru;
+
+    private long mElapsed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,61 +37,119 @@ public class GameActivity extends AppCompatActivity {
 
         mScore = 0;
         mScoreText = findViewById(R.id.scoreText);
+        mTimeText = findViewById(R.id.timeText);
         mQuestionText = findViewById(R.id.questionText);
         mInputText = findViewById(R.id.inputText);
 
         mSoru = SoruYoneticisi.rastgeleSoruAl(getApplicationContext());
         mQuestionText.setText(mSoru.soruMetni);
 
-        final TextView timeLeftText = findViewById(R.id.timeText);
+        String mGameMode = getIntent().getStringExtra(HomeActivity.EXTRA_MODE);
 
-        timeLeftText.setText(GameHelper.getTimeString(TOTAL_TIME_MILLIS));
+        switch (mGameMode) {
+            case HomeActivity.AGAINST_TIME_MODE:
+                final long TOTAL_TIME_MILLIS = 30000;
 
-        mTimer = new CountDownTimer(TOTAL_TIME_MILLIS, 100) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                timeLeftText.setText(GameHelper.getTimeString(millisUntilFinished));
-            }
+                mTimeText.setText(GameHelper.getTimeString(TOTAL_TIME_MILLIS));
 
-            @Override
-            public void onFinish() {
-                timeLeftText.setText(GameHelper.getTimeString(0));
+                mCountdownTimer = new CountDownTimer(TOTAL_TIME_MILLIS, 100) {
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        mTimeText.setText(GameHelper.getTimeString(millisUntilFinished));
+                    }
 
-                setResult(Activity.RESULT_OK, new Intent().putExtra(getString(R.string.extra_score), mScore));
+                    @Override
+                    public void onFinish() {
+                        mTimeText.setText(GameHelper.getTimeString(0));
 
-                finish();
-            }
-        };
+                        setResult(Activity.RESULT_OK, new Intent().putExtra(getString(R.string.extra_score), mScore));
 
-//        Geri sayımın başlamasından önce kısa bir süre beklenir.
-        final ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1);
-        executorService.schedule(new Runnable() {
-            @Override
-            public void run() {
-                mTimer.start();
-            }
-        }, 1, TimeUnit.SECONDS);
+                        finish();
+                    }
+                };
 
-        final EditText inputText = mInputText;
-        inputText.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (event.getAction() != KeyEvent.ACTION_DOWN) return false;
+                //        Geri sayımın başlamasından önce kısa bir süre beklenir.
+                final ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(1);
+                executorService.schedule(new Runnable() {
+                    @Override
+                    public void run() {
+                        mCountdownTimer.start();
+                    }
+                }, 1, TimeUnit.SECONDS);
 
-                switch (keyCode) {
-                    case KeyEvent.KEYCODE_DPAD_CENTER:
-                    case KeyEvent.KEYCODE_ENTER:
-                        girdiKontrolu(inputText.getText().toString());
-                        return true;
-                }
+                mInputText.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (isKeyEventValid(keyCode, event)) {
+                            checkInputText();
+                        }
 
-                return false;
-            }
-        });
+                        return false;
+                    }
+                });
+                break;
+            case HomeActivity.NORMAL_MODE:
+                final int TARGET_SCORE = 10;
+
+                mTimeText.setText(GameHelper.getTimeString(0));
+                ((TextView) findViewById(R.id.timeLabel)).setText(getString(R.string.elapsed_time));
+
+                mTimer = new Timer();
+                mElapsed = 0;
+
+                mTimer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        mElapsed += 100;
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mTimeText.setText(GameHelper.getTimeString(mElapsed));
+                            }
+                        });
+                    }
+                }, 1000, 100);
+
+                mInputText.setOnKeyListener(new View.OnKeyListener() {
+                    @Override
+                    public boolean onKey(View v, int keyCode, KeyEvent event) {
+                        if (isKeyEventValid(keyCode, event)) {
+                            checkInputText();
+
+                            if (mScore >= TARGET_SCORE) {
+                                mTimer.cancel();
+                                mTimer.purge();
+
+                                setResult(Activity.RESULT_OK, new Intent().putExtra(getString(R.string.extra_time), mElapsed));
+
+                                finish();
+                            }
+                        }
+
+                        return false;
+                    }
+                });
+                break;
+            default:
+                throw new IllegalArgumentException("Game mode value is wrong.");
+        }
     }
 
-    private void girdiKontrolu(String girdi) {
-        if (girdi.equalsIgnoreCase(mSoru.cevap)) {
+    private boolean isKeyEventValid(int keyCode, KeyEvent event) {
+        if (event.getAction() != KeyEvent.ACTION_DOWN) return false;
+
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+            case KeyEvent.KEYCODE_ENTER:
+                return true;
+        }
+
+        return false;
+    }
+
+    private void checkInputText() {
+        if (mInputText.getText().toString().equalsIgnoreCase(mSoru.cevap)) {
             mScore++;
             mScoreText.setText(String.valueOf(mScore));
             mSoru = SoruYoneticisi.rastgeleSoruAl(getApplicationContext());

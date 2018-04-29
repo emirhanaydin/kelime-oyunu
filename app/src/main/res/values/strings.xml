@@ -18,6 +18,7 @@
     <string name="placeholder_score" translatable="false">0</string>
     <string name="extra_username" translatable="false">USERNAME</string>
     <string name="extra_score" translatable="false">SCORE</string>
+    <string name="extra_time" translatable="false">TIME</string>
     <string name="empty" translatable="false"> </string>
     <string name="lorem_ipsum" translatable="false">Duis venenatis porttitor massa, ac porttitor elit hendrerit at. Integer ac imperdiet nunc, et vulputate sem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</string>
     <string name="remaining_time">Remaining Time</string>
@@ -29,4 +30,5 @@
     <string name="reset_database">Reset the database</string>
     <string name="database_was_reset">The database was reset</string>
     <string name="error_wrong_answer">Wrong answer</string>
+    <string name="elapsed_time">Elapsed Time</string>
 </resources>

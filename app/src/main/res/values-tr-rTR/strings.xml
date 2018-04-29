@@ -20,4 +20,5 @@
     <string name="reset_database">Veritabanını sıfırla</string>
     <string name="database_was_reset">Veritabanı sıfırlandı</string>
     <string name="error_wrong_answer">Hatalı yanıt</string>
+    <string name="elapsed_time">Geçen Süre</string>
 </resources>
